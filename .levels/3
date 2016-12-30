@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+function level3 {
+  echo
+  echo 'Nice one. So there are a number of animal files inside files/animals.'
+  echo
+  echo 'To save ourselves some typing let'"'"'s change directory into files animals.'
+  echo 'We can change directory using the `cd` program.'
+  echo
+  echo 'Try `cd files/animals`'
+  echo
+}
+function answer3 {
+  actual="$1"
+  expected="cd files/animals"
+
+  if [[ "$actual" == "$expected"* ]] || [[ "$(pwd)" == *"files/animals" ]]
+  then
+    return 0
+  else
+    return 1
+  fi
+}

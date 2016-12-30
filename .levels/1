@@ -4,16 +4,26 @@ function level1 {
   echo
   echo 'Minto. See the output above, that'"'"'s a list of the files in this directory. Badass.'
   echo
-  echo 'Right, next up lets see how "options" can change the behaviour of commands.'
-  echo 'An option is just some text that goes after the command name. They usually start with a dash.'
-  echo 'For example, by default `ls` doesn'"'"'t show us hidden files. We can tell `ls` to show us ALL the files with the `-a` option.'
-  echo 'Try `ls -a`'
+  echo '`ls` is just a program. Most programs can take "arguments". Arguments are provided separated by spaces after the program.'
+  echo 'You can tell `ls` to list the contents of a particulatar directory by providing the path to the directory as an argument.'
+  echo 'Let'"'"'s find out about the contents of that "files" directory...'
+  echo
+  echo 'Try `ls files`'
   echo
 }
 function answer1 {
   actual="$1"
-  expected="ls -a"
-  if [ "$actual" == "$expected" ]
+  expected="ls files"
+
+  output_sum=$(shasum "$2" | awk '{ print $1 }')
+  expected_output_sum="6f182bfb45532b6e65065f1234165543acd2aee6"
+
+  if [[ "${DEBUG:-false}" == 'true' ]] && [[ "$output_sum" != "$expected_output_sum" ]]
+  then
+    echo "$output_sum did not match $expected_output_sum"
+  fi
+
+  if [[ "$actual" == "$expected"* ]] || [[ "$output_sum" == "$expected_output_sum" ]]
   then
     return 0
   else

@@ -2,12 +2,14 @@
 
 clear
 
+root=$(pwd)
+
 for level in .levels/*
 do
   . $level
 done
 
-function level3 {
+function level6 {
   echo
   echo 'Awesome. You'"'"'ve passed all the levels.'
   echo 'You are my hero'
@@ -25,9 +27,10 @@ echo
 
 while read -r -p 'Tutorial: ('"$(pwd)"')$ ' -e COMMANDS
 do
-  eval "$COMMANDS" | tee ".output/last-command"
+  eval "$COMMANDS" > "$root/.output/last-command"
+  cat "$root/.output/last-command"
   history -s "$COMMANDS"
-  if "answer$level" "$COMMANDS" ".output/last-command"
+  if "answer$level" "$COMMANDS" "$root/.output/last-command"
   then
     level=$((level+1))
     tput setaf 5

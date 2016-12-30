@@ -15,7 +15,12 @@ function answer0 {
   expected="ls"
 
   output_sum=$(shasum "$2" | awk '{ print $1 }')
-  expected_output_sum="f6fd1656d79b06918bb5cf85c8bae58c3884deaf"
+  expected_output_sum="140a53235337f9ea3aa5244d665ad309a71556b7"
+
+  if [[ "${DEBUG:-false}" == 'true' ]] && [[ "$output_sum" != "$expected_output_sum" ]]
+  then
+    echo "$output_sum did not match $expected_output_sum"
+  fi
 
   # If the command was exactly as expected, or if the output exactly matches the expected output then on we go to the next level
 

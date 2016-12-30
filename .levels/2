@@ -2,19 +2,26 @@
 
 function level2 {
   echo
-  echo 'Oh cool, so there are some hidden files here too...'
+  echo 'Ok, so there'"'"'s another directory called "animals" inside "files".'
   echo
-  echo 'See that .levels entry above? That'"'"'s a directory. It'"'"'s hidden because it starts with a dot (.).'
-  echo 'Hiding files starting with a dot is a convention on unix based operating systems.'
+  echo 'You can provide a path to nested directories by separating them by forward slashes (/).'
   echo
-  echo 'We can find out what files are in the .levels folder by providing it as an "argument" to `ls`'
-  echo 'Try `ls .levels`'
+  echo 'Try `ls files/animals`'
   echo
 }
 function answer2 {
   actual="$1"
-  expected="ls .levels"
-  if [[ "$actual" == "$expected"* ]]
+  expected="ls files/animals"
+
+  output_sum=$(shasum "$2" | awk '{ print $1 }')
+  expected_output_sum="1c71353f5c46944a0a365547d0cfad99244828eb"
+
+  if [[ "${DEBUG:-false}" == 'true' ]] && [[ "$output_sum" != "$expected_output_sum" ]]
+  then
+    echo "$output_sum did not match $expected_output_sum"
+  fi
+
+  if [[ "$actual" == "$expected"* ]] || [[ "$output_sum" == "$expected_output_sum" ]]
   then
     return 0
   else

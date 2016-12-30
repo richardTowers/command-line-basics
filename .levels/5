@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+function level5 {
+  echo
+  echo 'A sneaky snake! `ls -a` has shown us all the files, including a hidden .snake file.'
+  echo
+  echo 'Let'"'"'s recap what we'"'"'ve learned.'
+  echo
+  echo 'You can use the `ls` command to list files in a directory.'
+  echo
+  echo 'You can provide arguments to programs by adding them after the program name separated by spaces,'
+  echo 'for example `ls path-to-directory` will list the files in a particular directory.'
+  echo
+  echo 'You can change directory by providing a directory as an argument to `cd` (as `cd path-to-directory).'
+  echo
+  echo 'Finally, you can customize the behaviour of programs by providing options.'
+  echo 'For example `ls -a` lists all the hidden files.'
+  echo
+  echo 'The tutuorial will exit after your next command and you'"'"'ll be returned to your main command line.'
+  echo
+}
+function answer5 {
+  exit
+}

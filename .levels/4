@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+function level4 {
+  echo
+  echo 'Changing directory is a fundamental skill. You'"'"'ll use it all the time on your adventures around the command line.'
+  echo
+  echo 'Now that we'"'"'re in the right directory we can learn about options (sometimes referred to as flags).'
+  echo
+  echo 'By default `ls` doesn'"'"'t show us hidden files (by convention this is anything starting with a dot (.)).'
+  echo 'We can tell it to show us ALL the files by providing the `-a` flag'
+  echo
+  echo 'Try `ls -a`'
+  echo
+}
+function answer4 {
+  actual="$1"
+  expected="ls -a"
+
+  output_sum=$(shasum "$2" | awk '{ print $1 }')
+  expected_output_sum="6f182bfb45532b6e65065f1234165543acd2aee6"
+
+  if [[ "${DEBUG:-false}" == 'true' ]] && [[ "$output_sum" != "$expected_output_sum" ]]
+  then
+    echo "$output_sum did not match $expected_output_sum"
+  fi
+
+  if [[ "$actual" == "$expected"* ]] || [[ "$output_sum" == "$expected_output_sum" ]]
+  then
+    return 0
+  else
+    return 1
+  fi
+}
