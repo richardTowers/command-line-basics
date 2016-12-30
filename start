@@ -25,9 +25,9 @@ echo
 
 while read -r -p 'Tutorial: ('"$(pwd)"')$ ' -e COMMANDS
 do
-  eval "$COMMANDS"
+  eval "$COMMANDS" | tee ".output/last-command"
   history -s "$COMMANDS"
-  if "answer$level" "$COMMANDS"
+  if "answer$level" "$COMMANDS" ".output/last-command"
   then
     level=$((level+1))
     tput setaf 5

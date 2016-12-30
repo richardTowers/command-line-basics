@@ -13,7 +13,13 @@ function level0 {
 function answer0 {
   actual="$1"
   expected="ls"
-  if [ "$actual" == "$expected" ]
+
+  output_sum=$(shasum "$2" | awk '{ print $1 }')
+  expected_output_sum="f6fd1656d79b06918bb5cf85c8bae58c3884deaf"
+
+  # If the command was exactly as expected, or if the output exactly matches the expected output then on we go to the next level
+
+  if [[ "$actual" == "$expected" ]] || [[ "$output_sum" == "$expected_output_sum" ]]
   then
     return 0
   else
