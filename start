@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+clear
+
+for level in .levels/*
+do
+  . $level
+done
+
+function level2 {
+  echo
+  echo 'Awesome. You'"'"'ve passed all the levels.'
+  echo 'You are my hero'
+  tput sgr0
+  echo
+  exit
+}
+
+level=0
+
+tput setaf 5
+level$level
+tput sgr0
+echo
+
+while read -r -p 'Tutorial: ('"$(pwd)"')$ ' -e COMMANDS
+do
+  eval "$COMMANDS"
+  history -s "$COMMANDS"
+  answer="answer$level"
+  if [ "$COMMANDS" == "${!answer}" ]
+  then
+    level=$((level+1))
+    tput setaf 5
+    level$level
+    tput sgr0
+  fi
+done

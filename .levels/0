@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function level0 {
+  echo
+  echo 'Welcome to the GDS interactive command line tutorial.'
+  echo 'We'"'"'re going to walk you through using the unix command line'
+  echo
+  echo 'First, lets learn about some simple commands'
+  echo '`ls` lists the files in the current directory'
+  echo 'To run `ls` simply type "ls" and press enter:'
+  echo
+}
+answer0="ls"

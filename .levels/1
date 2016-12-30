@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function level1 {
+  echo
+  echo 'Minto. See the output above, that'"'"'s a list of the files in this directory. Badass.'
+  echo
+  echo 'Right, next up lets see how "options" can change the behaviour of commands.'
+  echo 'An option is just some text that goes after the command name. They usually start with a dash.'
+  echo 'For example, by default `ls` doesn'"'"'t show us hidden files. We can tell `ls` to show us ALL the files with the `-a` option.'
+  echo 'Try `ls -a`'
+  echo
+}
+answer1="ls -a"
