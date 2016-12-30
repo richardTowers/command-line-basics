@@ -10,4 +10,13 @@ function level1 {
   echo 'Try `ls -a`'
   echo
 }
-answer1="ls -a"
+function answer1 {
+  actual="$1"
+  expected="ls -a"
+  if [ "$actual" == "$expected" ]
+  then
+    return 0
+  else
+    return 1
+  fi
+}

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+function level2 {
+  echo
+  echo 'Oh cool, so there are some hidden files here too...'
+  echo
+  echo 'See that .levels entry above? That'"'"'s a directory. It'"'"'s hidden because it starts with a dot (.).'
+  echo 'Hiding files starting with a dot is a convention on unix based operating systems.'
+  echo
+  echo 'We can find out what files are in the .levels folder by providing it as an "argument" to `ls`'
+  echo 'Try `ls .levels`'
+  echo
+}
+function answer2 {
+  actual="$1"
+  expected="ls .levels"
+  if [[ "$actual" == "$expected"* ]]
+  then
+    return 0
+  else
+    return 1
+  fi
+}

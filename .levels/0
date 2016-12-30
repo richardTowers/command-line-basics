@@ -10,4 +10,13 @@ function level0 {
   echo 'To run `ls` simply type "ls" and press enter:'
   echo
 }
-answer0="ls"
+function answer0 {
+  actual="$1"
+  expected="ls"
+  if [ "$actual" == "$expected" ]
+  then
+    return 0
+  else
+    return 1
+  fi
+}

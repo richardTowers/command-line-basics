@@ -7,7 +7,7 @@ do
   . $level
 done
 
-function level2 {
+function level3 {
   echo
   echo 'Awesome. You'"'"'ve passed all the levels.'
   echo 'You are my hero'
@@ -27,8 +27,7 @@ while read -r -p 'Tutorial: ('"$(pwd)"')$ ' -e COMMANDS
 do
   eval "$COMMANDS"
   history -s "$COMMANDS"
-  answer="answer$level"
-  if [ "$COMMANDS" == "${!answer}" ]
+  if "answer$level" "$COMMANDS"
   then
     level=$((level+1))
     tput setaf 5
